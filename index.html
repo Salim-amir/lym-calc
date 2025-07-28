@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Calculator</title>
+    <link
+      type="image/png"
+      sizes="16x16"
+      rel="icon"
+      href="icons8-calculator-48.png"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="top-bar">
+        <strong>LymCalc.</strong>
+        <span class="theme-toggle">🌙</span>
+      </div>
+      <div class="screen">
+        <div id="exp" class="expression">0</div>
+        <div id="res" class="result"></div>
+      </div>
+
+      <div class="buttons">
+        <button class="c" onclick="clearDisplay()">C</button>
+        <button class="operator" onclick="input('%')">%</button>
+        <button class="operator" onclick="input('/')">/</button>
+        <button class="remove" onclick="deleteLast()">⌫</button>
+
+        <button onclick="input('7')">7</button>
+        <button onclick="input('8')">8</button>
+        <button onclick="input('9')">9</button>
+        <button class="operator" onclick="input('*')">×</button>
+
+        <button onclick="input('4')">4</button>
+        <button onclick="input('5')">5</button>
+        <button onclick="input('6')">6</button>
+        <button class="operator" onclick="input('-')">−</button>
+
+        <button onclick="input('1')">1</button>
+        <button onclick="input('2')">2</button>
+        <button onclick="input('3')">3</button>
+        <button class="operator" onclick="input('+')">+</button>
+
+        <button onclick="input('0')">0</button>
+        <button onclick="input('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="copyResult()">📋</button>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
