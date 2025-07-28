@@ -5,12 +5,11 @@ const themeToggle = document.querySelector(".theme-toggle");
 let expression = "";
 
 function input(value) {
-  // Cegah angka oktal (seperti 012)
   const lastNumMatch = expression.match(/(\d+\.?\d*)$/);
   const lastNum = lastNumMatch ? lastNumMatch[0] : "";
 
   if (lastNum === "0" && ![".", "+", "-", "*", "/", "%"].includes(value)) {
-    expression = expression.slice(0, -1) + value; // ganti 0 jadi angka baru
+    expression = expression.slice(0, -1) + value;
   } else {
     expression += value;
   }
@@ -34,7 +33,7 @@ function deleteLast() {
 
 function calculate() {
   try {
-    const sanitized = expression.replace(/\b0+(\d+)/g, '$1'); // hilangkan nol di depan angka (bukan desimal)
+    const sanitized = expression.replace(/\b0+(\d+)/g, "$1"); // hilangkan nol di depan angka (bukan desimal)
     const result = eval(sanitized);
     resDiv.innerText = result;
     expression = result.toString();
