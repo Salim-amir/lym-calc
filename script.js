@@ -5,16 +5,25 @@ const themeToggle = document.querySelector(".theme-toggle");
 let expression = "";
 
 function input(value) {
-  expression += value;
+  // Cegah angka oktal (seperti 012)
+  const lastNumMatch = expression.match(/(\d+\.?\d*)$/);
+  const lastNum = lastNumMatch ? lastNumMatch[0] : "";
+
+  if (lastNum === "0" && ![".", "+", "-", "*", "/", "%"].includes(value)) {
+    expression = expression.slice(0, -1) + value; // ganti 0 jadi angka baru
+  } else {
+    expression += value;
+  }
+
   expDiv.innerText = expression;
-  expDiv.classList.remove("small"); // ⬅️ input tetap normal
-  resDiv.innerText = ""; // Hapus hasil
+  expDiv.classList.remove("small"); // ekspresi tetap besar
+  resDiv.innerText = ""; // reset hasil saat input
 }
 
 function clearDisplay() {
   expression = "";
   expDiv.innerText = "0";
-  expDiv.classList.remove("small"); // Reset ukuran ekspresi
+  expDiv.classList.remove("small");
   resDiv.innerText = "";
 }
 
@@ -25,15 +34,13 @@ function deleteLast() {
 
 function calculate() {
   try {
-    let result = eval(expression);
-
-    expDiv.innerText = expression + " =";
-    expDiv.classList.add("small"); // ⬅️ ekspresi diperkecil
-    resDiv.innerText = result; // ⬅️ hasil besar & menonjol
-    expression = result.toString(); // Tetap bisa dihitung ulang
+    const sanitized = expression.replace(/\b0+(\d+)/g, '$1'); // hilangkan nol di depan angka (bukan desimal)
+    const result = eval(sanitized);
+    resDiv.innerText = result;
+    expression = result.toString();
+    expDiv.classList.add("small"); // kecilkan ekspresi
   } catch {
-    expDiv.innerText = "Error";
-    resDiv.innerText = "";
+    resDiv.innerText = "Error";
     expression = "";
   }
 }
@@ -62,7 +69,7 @@ themeToggle.addEventListener("click", () => {
 
 document.getElementById("copy-btn").addEventListener("click", copyResult);
 function copyResult() {
-  const resultText = document.getElementById("res").innerText;
+  const resultText = resDiv.innerText;
   navigator.clipboard
     .writeText(resultText)
     .then(() => alert("Hasil disalin!"))
