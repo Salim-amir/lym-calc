@@ -5,6 +5,7 @@ const themeToggle = document.querySelector(".theme-toggle");
 let expression = "";
 
 function input(value) {
+  navigator.vibrate?.(50);
   const lastNumMatch = expression.match(/(\d+\.?\d*)$/);
   const lastNum = lastNumMatch ? lastNumMatch[0] : "";
 
@@ -20,6 +21,7 @@ function input(value) {
 }
 
 function clearDisplay() {
+  navigator.vibrate?.(50);
   expression = "";
   expDiv.innerText = "0";
   expDiv.classList.remove("small");
@@ -27,11 +29,13 @@ function clearDisplay() {
 }
 
 function deleteLast() {
+  navigator.vibrate?.(50);
   expression = expression.slice(0, -1);
   expDiv.innerText = expression || "0";
 }
 
 function calculate() {
+  navigator.vibrate?.(50);
   try {
     const sanitized = expression.replace(/\b0+(\d+)/g, "$1"); // hilangkan nol di depan angka (bukan desimal)
     const result = eval(sanitized);
