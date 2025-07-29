@@ -20,7 +20,9 @@ body.dark {
 .calculator {
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 4px 11px -6px rgba(0, 0, 0, 0.73);
+  -webkit-box-shadow: 10px 4px 11px -6px rgba(0, 0, 0, 0.73);
+  -moz-box-shadow: 10px 4px 11px -6px rgba(0, 0, 0, 0.73);
   padding: 20px;
   width: 320px;
   transition: background 0.3s ease;
@@ -28,6 +30,9 @@ body.dark {
 
 body.dark .calculator {
   background: #2c2c2c;
+  box-shadow: 10px 4px 11px -6px rgba(255, 255, 255, 0.73);
+  -webkit-box-shadow: 10px 4px 11px -6px rgba(255, 255, 255, 0.73);
+  -moz-box-shadow: 10px 4px 11px -6px rgba(255, 255, 255, 0.73);
 }
 
 .display {
@@ -60,10 +65,31 @@ button {
   cursor: pointer;
   background-color: #dedede;
   transition: background 0.2s ease;
+  box-shadow: 5px 4px 8px -4px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 5px 4px 8px -4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 5px 4px 8px -4px rgba(0, 0, 0, 0.6);
 }
 
 button:hover {
   background-color: #ccc;
+  box-shadow: 5px 4px 8px -4px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 5px 4px 8px -4px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 5px 4px 8px -4px rgba(0, 0, 0, 0.7);
+}
+
+body.dark button {
+  background-color: #555;
+  color: #fff;
+ box-shadow: 5px 4px 8px -4px rgba(255,255,255,0.6);
+-webkit-box-shadow: 5px 4px 8px -4px rgba(255,255,255,0.6);
+-moz-box-shadow: 5px 4px 8px -4px rgba(255,255,255,0.6);
+}
+
+body.dark button:hover {
+  background-color: #666;
+  box-shadow: 5px 4px 8px -4px rgba(255,255,255,0.7);
+  -webkit-box-shadow: 5px 4px 8px -4px rgba(255,255,255,0.7);
+  -moz-box-shadow: 5px 4px 8px -4px rgba(255,255,255,0.7);
 }
 
 body.dark button:not(.operator):not(.remove):not(.c):not(.equals):hover {
@@ -185,7 +211,7 @@ body.dark .result {
 
 @media (min-width: 1025px) {
   .calculator {
-    max-width: 800px; 
+    max-width: 800px;
     width: 100%;
     height: 100vh;
   }
@@ -214,7 +240,7 @@ body.dark .result {
   .calculator {
     width: 90%;
     max-width: 600px;
-    height: 90vh; 
+    height: 90vh;
     margin: auto;
     padding: 1.5rem;
     display: flex;
@@ -232,7 +258,7 @@ body.dark .result {
   }
 
   .buttons {
-    flex: 2; 
+    flex: 2;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
@@ -248,26 +274,25 @@ body.dark .result {
     font-size: 3rem;
     text-align: right;
     transition: font-size 0.3s ease;
-
-    }
-
-    #exp.small {
-      font-size: 1.5rem; 
-    }
-
-    #res {
-      font-size: 4rem;
-      font-weight: bold;
-      text-align: right;
-      margin-top: 0.5rem;
-    }
   }
+
+  #exp.small {
+    font-size: 1.5rem;
+  }
+
+  #res {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+}
 
 @media (max-width: 600px) {
   .calculator {
     width: 90%;
     max-width: 400px;
-    height: auto; 
+    height: auto;
     padding: 1rem;
   }
 
